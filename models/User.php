@@ -15,6 +15,7 @@ use yii\helpers\ArrayHelper;
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $verification_token
+ * @property string $username
  * @property string $email
  * @property string $auth_key
  * @property integer $status
@@ -45,6 +46,10 @@ class User extends ModelsUser implements IdentityInterface
                 [['created_at', 'updated_at'], 'default', 'value' => time()],
                 [['password_hash', 'email', 'status', 'created_at', 'updated_at'], 'required'],
                 ['email', 'email'],
+                ['username', 'string'],
+                ['username', 'default', 'value' => function () {
+                    return $this->email;
+                }],
             ]
         );
     }

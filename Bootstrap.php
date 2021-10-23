@@ -2,6 +2,7 @@
 
 namespace achertovsky\user;
 
+use achertovsky\user\models\User;
 use Yii;
 use Exception;
 use yii\base\BootstrapInterface;
@@ -37,6 +38,9 @@ class Bootstrap implements BootstrapInterface
             Yii::$app->controllerMap = $map;
         }
 
+        /**
+         * routing
+         */
         if (php_sapi_name() != 'cli') {
             $urlManager = Yii::$app->urlManager;
             $urlManager->addRules(
@@ -58,6 +62,13 @@ class Bootstrap implements BootstrapInterface
                     ]
                 );
             }
+        }
+
+        /**
+         * Identity class config
+         */
+        if (php_sapi_name() != 'cli') {
+            Yii::$app->user->identityClass = User::class;
         }
     }
 }

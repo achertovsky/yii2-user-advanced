@@ -1,4 +1,6 @@
-Will override default template user interaction, including routes and etc
+Will override default template user interaction, including:
+- routes
+- identity class
 
 
 # installation, automated

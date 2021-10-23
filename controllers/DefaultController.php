@@ -10,7 +10,10 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use achertovsky\user\models\User;
 use yii\authclient\ClientInterface;
+use frontend\models\VerifyEmailForm;
+use yii\web\BadRequestHttpException;
 use achertovsky\user\models\LoginForm;
+use yii\base\InvalidArgumentException;
 use achertovsky\user\models\SignupForm;
 use achertovsky\traits\AjaxValidationTrait;
 use frontend\models\PasswordResetRequestForm;
@@ -65,7 +68,7 @@ class DefaultController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['signup', 'auth', 'login'],
+                        'actions' => ['signup', 'auth', 'login', 'verify-email'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -255,12 +258,12 @@ class DefaultController extends Controller
         }
         if ($user = $model->verifyEmail()) {
             if (Yii::$app->user->login($user)) {
-                Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
+                Yii::$app->session->setFlash('success', Yii::t('app', 'Your email has been confirmed!'));
                 return $this->goHome();
             }
         }
 
-        Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
+        Yii::$app->session->setFlash('error', Yii::t('app', 'Sorry, we are unable to verify your account with provided token.'));
         return $this->goHome();
     }
 
