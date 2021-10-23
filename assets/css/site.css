@@ -1,0 +1,8 @@
+.help-block {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.has-error > .help-block {
+    color: #dc3545 !important;
+}
