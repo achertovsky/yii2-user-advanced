@@ -9,6 +9,7 @@ use yii\widgets\ActiveForm;
 use himiklab\yii2\recaptcha\ReCaptcha2;
 
 $this->title = Yii::t('app', 'Sign up');
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

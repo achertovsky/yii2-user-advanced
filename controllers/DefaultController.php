@@ -5,6 +5,7 @@ namespace achertovsky\user\controllers;
 use Yii;
 use yii\helpers\Url;
 use yii\web\Controller;
+use achertovsky\user\Asset;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use achertovsky\user\models\User;
@@ -12,10 +13,8 @@ use yii\authclient\ClientInterface;
 use achertovsky\user\models\LoginForm;
 use achertovsky\user\models\SignupForm;
 use achertovsky\traits\AjaxValidationTrait;
-use achertovsky\user\Asset;
-use frontend\models\ResendVerificationEmailForm;
+use frontend\models\PasswordResetRequestForm;
 use achertovsky\user\handlers\RegistrationHandler;
-use achertovsky\user\UserAsset;
 
 class DefaultController extends Controller
 {

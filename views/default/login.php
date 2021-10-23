@@ -6,7 +6,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use himiklab\yii2\recaptcha\ReCaptcha2;
 
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
