@@ -10,20 +10,15 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use achertovsky\user\models\User;
 use yii\authclient\ClientInterface;
-use frontend\models\VerifyEmailForm;
 use yii\web\BadRequestHttpException;
 use achertovsky\user\models\LoginForm;
 use yii\base\InvalidArgumentException;
 use achertovsky\user\models\SignupForm;
 use achertovsky\traits\AjaxValidationTrait;
-use achertovsky\user\actions\EmailInteractionAction;
-use achertovsky\user\handlers\UserMailHandler;
+use achertovsky\user\models\VerifyEmailForm;
 use achertovsky\user\models\ResetPasswordForm;
-use frontend\models\ResendVerificationEmailForm;
 use achertovsky\user\handlers\RegistrationHandler;
-use achertovsky\user\models\PasswordResetRequestForm;
-use achertovsky\user\models\UserEmailInteractionForm;
-use yii\base\Model;
+use achertovsky\user\actions\EmailInteractionAction;
 
 class DefaultController extends Controller
 {

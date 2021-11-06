@@ -3,6 +3,7 @@
 namespace achertovsky\user\models;
 
 use Yii;
+use achertovsky\user\models\User;
 use common\models\LoginForm as ModelsLoginForm;
 
 /**
@@ -14,6 +15,10 @@ class LoginForm extends ModelsLoginForm
     public $email;
     /** @var string */
     public $reCaptcha;
+    /**
+     * @var User
+     */
+    private $_user;
 
 
     /**
@@ -39,5 +44,19 @@ class LoginForm extends ModelsLoginForm
             ];
         }
         return $rules;
+    }
+
+    /**
+     * Finds user by [[username]]
+     *
+     * @return User|null
+     */
+    protected function getUser()
+    {
+        if ($this->_user === null) {
+            $this->_user = User::findByEmail($this->email);
+        }
+
+        return $this->_user;
     }
 }

@@ -3,16 +3,14 @@
 namespace achertovsky\user\models;
 
 use Yii;
-use yii\base\Model;
+use frontend\models\SignupForm as ModelsSignupForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * Signup form
  */
-class SignupForm extends Model
+class SignupForm extends ModelsSignupForm
 {
-    /** @var string */
-    public $email;
-    /** @var string */
     public $password;
     /** @var string */
     public $repeatPassword;
@@ -31,24 +29,37 @@ class SignupForm extends Model
 
 
     /**
+     * Remove the username validation
+     * Override user targetClass
+     *
      * {@inheritdoc}
      */
     public function rules()
     {
-        $rules = [
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\achertovsky\user\models\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
+        $rules = parent::rules();
+        foreach ($rules as $key => $rule) {
+            if (in_array('username', $rule)) {
+                unset($rules[$key]);
+                continue;
+            }
+            if (array_key_exists('targetClass', $rule)) {
+                switch ($rule['targetClass']) {
+                    case User::class:
+                        $rules[$key]['targetClass'] = '\achertovsky\user\models\User';
+                        break;
+                }
+            }
+        }
+        $rules = ArrayHelper::merge(
+            $rules,
+            [
+                ['email', 'unique', 'targetClass' => '\achertovsky\user\models\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
 
-            ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
-
-            ['repeatPassword', 'required'],
-            ['repeatPassword', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
-            ['repeatPassword', 'compare', 'compareAttribute' => "password"],
-        ];
+                ['repeatPassword', 'required'],
+                ['repeatPassword', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+                ['repeatPassword', 'compare', 'compareAttribute' => "password"],
+            ]
+        );
         if (Yii::$app->has('reCaptcha')) {
             $rules[] = [
                 ['reCaptcha'],

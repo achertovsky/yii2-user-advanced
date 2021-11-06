@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\models;
+namespace achertovsky\user\models;
 
 use Yii;
 use yii\base\InvalidCallException;
@@ -17,7 +17,7 @@ class VerifyEmailForm extends ModelsVerifyEmailForm
     public function __construct($token, array $config = [])
     {
         try {
-            parent::__construct($config);
+            parent::__construct($token, $config);
         } catch (InvalidArgumentException $ex) {
             if ($ex->getMessage() == 'Verify email token cannot be blank.') {
                 throw new InvalidCallException(Yii::t('app', 'Verify email token cannot be blank.'));
