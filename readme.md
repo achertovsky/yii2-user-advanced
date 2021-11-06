@@ -1,3 +1,5 @@
+Works only for yii2-advanced-template ~2.0.14
+
 Will override default template user interaction, including:
 - routes
 - identity class
@@ -27,22 +29,14 @@ expected to work for template with enabled pretty routing and defined base route
     ],
 ],
 ```
--- add to components -> request 'baseUrl' => '',
+-- add to frontend/backend components -> request 'baseUrl',
 ```
 'request' => [
     /**
      * ...
      */
     'baseUrl' => '',
-],
-```
--- add to backend config components -> request 'baseUrl' => '/backend',
-```
-'request' => [
-    /**
-     * ...
-     */
-    'baseUrl' => '/backend',
+    //'baseUrl' => '/backend', //for backend
 ],
 ```
 
@@ -56,7 +50,7 @@ expected to work for template with enabled pretty routing and defined base route
         *
         * @var string
         */
-        'senderEmail' => 'alexzaets.dev@gmail.com',
+        'senderEmail' => 'desired.email@mailbox.com', // desired email
     ],
 ],
 ```
@@ -81,8 +75,8 @@ Path is added via bootstrap, just `./yii migrate/up`
 -- remove behaviors (unless you need it)
 
 - Cleanup unused classes:
--- frontend\models\VerifyEmailForm
--- frontend\models\ResetPasswordForm
+-- frontend\models\ResendVerificationEmailForm
+-- frontend\models\PasswordResetRequestForm
 
 - Cleanup unused views:
 -- backend/views/site/login.php

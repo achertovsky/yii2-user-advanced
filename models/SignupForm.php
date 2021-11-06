@@ -43,10 +43,10 @@ class SignupForm extends Model
             ['email', 'unique', 'targetClass' => '\achertovsky\user\models\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
             ['repeatPassword', 'required'],
-            ['repeatPassword', 'string', 'min' => 6],
+            ['repeatPassword', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
             ['repeatPassword', 'compare', 'compareAttribute' => "password"],
         ];
         if (Yii::$app->has('reCaptcha')) {

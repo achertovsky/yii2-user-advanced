@@ -1,5 +1,5 @@
 {
-    "name": "achertovsky/yii2-user",
+    "name": "achertovsky/yii2-user-advanced",
     "description": "Handy, light user extension with oauth and classical email login",
     "type": "yii2-extension",
     "keywords": ["yii2"," extension"],

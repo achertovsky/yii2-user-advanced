@@ -23,40 +23,21 @@ class UserMailHandler extends BaseObject
     }
     
     /**
-     * Undocumented function
+     * Password reset request
      *
-     * @param User $user
-     * @param array $params
+     * @param string $email
      * @return void
      */
-    public static function sendPasswordResetRequest(User $user, $params = [])
+    public static function sendPasswordResetRequest($email)
     {
+        $user = User::findByEmail($email);
+        if (empty($user)) {
+            return false;
+        }
         return static::sendMessage(
             $user->email,
-            Yii::t("app", "Password reset for ".Yii::$app->name),
+            Yii::t("app", "Password reset for ").Yii::$app->name,
             'passwordResetToken',
-            ArrayHelper::merge(
-                [
-                    'user' => $user,
-                ],
-                $params
-            )
-        );
-    }
-
-    /**
-     * Sends welcome message with email confirmation
-     *
-     * @param User $user
-     * @param array $params
-     * @return void
-     */
-    public static function sendEmailConfirm(User $user)
-    {
-        return static::sendMessage(
-            $user->email,
-            Yii::t("app", "Welcome!"),
-            'signup',
             [
                 'user' => $user,
             ]
@@ -64,12 +45,37 @@ class UserMailHandler extends BaseObject
     }
 
     /**
+     * Password reset request
+     *
+     * @param string $email
+     * @param User $user
+     * @return void
+     */
+    public static function sendEmailConfirm($email, User $user = null)
+    {
+        if (is_null($user)) {
+            $user = User::findByEmail($email, User::STATUS_INACTIVE);
+            if (empty($user)) {
+                return false;
+            }
+        }
+        return static::sendMessage(
+            $user->email,
+            Yii::t("app", "Welcome!"),
+            'emailVerify',
+            [
+                'user' => $user,
+            ]
+        );
+    }
+    
+    /**
      * @param string $to
      * @param string $subject
      * @param string $view
      * @param array  $params
      *
-     * @return bool
+     * @return boolean
      */
     protected static function sendMessage($to, $subject, $view, $params = [])
     {

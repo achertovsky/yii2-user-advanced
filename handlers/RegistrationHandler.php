@@ -44,6 +44,6 @@ class RegistrationHandler extends BaseObject
      */
     public static function signupEmail(User $user)
     {
-        return UserMailHandler::sendEmailConfirm($user);
+        return UserMailHandler::sendEmailConfirm($user->email, $user);
     }
 }

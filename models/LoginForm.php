@@ -35,7 +35,7 @@ class LoginForm extends ModelsLoginForm
             $rules[] = [
                 ['reCaptcha'],
                 \himiklab\yii2\recaptcha\ReCaptchaValidator2::class,
-                'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.'),
+                'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a robot.'),
             ];
         }
         return $rules;

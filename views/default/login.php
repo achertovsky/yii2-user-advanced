@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use himiklab\yii2\recaptcha\ReCaptcha2;
 
 $this->title = Yii::t('app', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
@@ -27,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+            <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
             <?= $form->field($model, 'password')->passwordInput() ?>
 
@@ -42,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php
             if (Yii::$app->has('reCaptcha')) {
                 echo $form->field($model, 'reCaptcha', ['options' => ['class' => 'text-center']])->label(false)->widget(
-                    \himiklab\yii2\recaptcha\ReCaptcha2::className(),
+                    \himiklab\yii2\recaptcha\ReCaptcha2::class,
                     [
                         'widgetOptions' => ['class' => 'inline-block'],
                         'size' => ReCaptcha2::SIZE_COMPACT,

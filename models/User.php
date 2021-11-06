@@ -65,4 +65,15 @@ class User extends ModelsUser implements IdentityInterface
         parent::afterValidate();
         $this->updated_at = time();
     }
+
+    /**
+     * Finds user by email
+     *
+     * @param string $email
+     * @return static
+     */
+    public static function findByEmail($email, $status = self::STATUS_ACTIVE)
+    {
+        return static::findOne(['email' => $email, 'status' => $status]);
+    }
 }

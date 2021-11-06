@@ -15,7 +15,7 @@ class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-        Yii::setAlias('@ach-user', '@vendor/achertovsky/yii2-user');
+        Yii::setAlias('@ach-user', '@vendor/achertovsky/yii2-user-advanced');
         /**
          * @todo
          * add here i18n
@@ -51,6 +51,7 @@ class Bootstrap implements BootstrapInterface
                     'verify-email/<token:.+>' => 'user/default/verify-email',
                     'reset-password/<token:.+>' => 'user/default/reset-password',
                     'request-password-reset' => 'user/default/request-password-reset',
+                    'resend-verification-email' => 'user/default/resend-verification-email',
                 ]
             );
             if (Yii::$app->getModule('user')->replaceDefaultRoutes) {
