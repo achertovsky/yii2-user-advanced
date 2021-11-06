@@ -7,6 +7,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use achertovsky\user\Asset;
 use yii\filters\VerbFilter;
+use yii\authclient\AuthAction;
 use yii\filters\AccessControl;
 use achertovsky\user\models\User;
 use yii\authclient\ClientInterface;
@@ -38,7 +39,7 @@ class DefaultController extends Controller
                 'class' => AuthAction::class,
                 // if user is not logged in, will try to log him in, otherwise
                 // will try to connect social account to user.
-                'successCallback' => [$this, 'authenticate']
+                'successCallback' => [$this, 'authenticate'],
             ],
             'request-password-reset' => [
                 'class' => EmailInteractionAction::class,

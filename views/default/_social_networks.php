@@ -1,8 +1,11 @@
 <?php
 
 use yii\helpers\Url;
-use yii\bootstrap\Html;
+use yii\helpers\Html;
 use rmrevin\yii\fontawesome\FA;
+use rmrevin\yii\fontawesome\cdn\AssetBundle;
+
+AssetBundle::register($this);
 
 $exist = isset(Yii::$app->authClientCollection);
 if ($exist) {
@@ -12,7 +15,7 @@ if ($exist) {
 ?>
         <div class="form-group">
             <?= Html::a(
-                FA::icon($name)." Via $name",
+                FA::icon($name).Yii::t("app", "Via ").$name,
                 Url::toRoute(
                     [
                         '/user/default/auth',

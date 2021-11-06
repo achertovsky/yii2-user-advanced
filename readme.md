@@ -55,6 +55,27 @@ expected to work for template with enabled pretty routing and defined base route
 ],
 ```
 
+## oauth
+to make it work just configure corresponding class in components -> authClientCollection
+facebook, google works for sure. others wasnt tested, sorry
+```
+'authClientCollection' => [
+    'class' => 'yii\authclient\Collection',
+    'clients' => [
+        /**
+         * key name gonna be displayed on signup/login page
+         * name it as you want it to displayed
+         */
+        'facebook' => [ 
+            'class' => 'yii\authclient\clients\Facebook',
+            'clientId' => '',
+            'clientSecret' => '',
+        ],
+        // ... so on
+    ],
+],
+```
+
 ## migrations
 Path is added via bootstrap, just `./yii migrate/up`
 
