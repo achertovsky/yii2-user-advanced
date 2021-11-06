@@ -5,10 +5,6 @@ Will override default template user interaction, including:
 - identity class
 
 
-# installation, automated
-
-in progress
-
 # installation, manual
 
 ## pretty url
