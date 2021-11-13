@@ -77,30 +77,30 @@ Path is added via bootstrap, just `./yii migrate/up`
 
 ## suggestions:
 - Higly suggested to do following actions in default frontend\controllers\SiteController:
--- remove actionLogin
--- remove actionLogout
--- remove actionSignup
--- remove actionRequestPasswordReset
--- remove actionResetPassword
--- remove actionVerifyEmail
--- remove actionResendVerificationEmail
--- remove behaviors (unless you need it)
--- remove captcha action from actions() method
+  - remove actionLogin
+  - remove actionLogout
+  - remove actionSignup
+  - remove actionRequestPasswordReset
+  - remove actionResetPassword
+  - remove actionVerifyEmail
+  - remove actionResendVerificationEmail
+  - remove behaviors (unless you need it)
+  - remove captcha action from actions() method
 - Higly suggested to do following actions in default backend\controllers\SiteController:
--- remove actionLogin
--- remove actionLogout
--- remove behaviors (unless you need it)
+  - remove actionLogin
+  - remove actionLogout
+  - remove behaviors (unless you need it)
 
 - Cleanup unused classes:
--- frontend\models\ResendVerificationEmailForm
--- frontend\models\PasswordResetRequestForm
+  - frontend\models\ResendVerificationEmailForm
+  - frontend\models\PasswordResetRequestForm
 
 - Cleanup unused views:
--- backend/views/site/login.php
--- frontend/views/site/login.php
--- frontend/views/site/requestPasswordResetToken.php
--- frontend/views/site/resendVerificationEmail.php
--- frontend/views/site/resetPassword.php
--- frontend/views/site/signup.php
--- common/mail/*
+  - backend/views/site/login.php
+  - frontend/views/site/login.php
+  - frontend/views/site/requestPasswordResetToken.php
+  - frontend/views/site/resendVerificationEmail.php
+  - frontend/views/site/resetPassword.php
+  - frontend/views/site/signup.php
+  - common/mail/*
 
