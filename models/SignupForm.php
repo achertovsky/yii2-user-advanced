@@ -21,9 +21,9 @@ class SignupForm extends ModelsSignupForm
     public function attributeLabels()
     {
         return [
-            'email' => Yii::t('app', 'Your email address'),
-            'password' => Yii::t('app', 'Password'),
-            'repeatPassword' => Yii::t('app', 'Repeat Password'),
+            'email' => Yii::t('ach-user', 'Your email address'),
+            'password' => Yii::t('ach-user', 'Password'),
+            'repeatPassword' => Yii::t('ach-user', 'Repeat Password'),
         ];
     }
 
@@ -53,7 +53,7 @@ class SignupForm extends ModelsSignupForm
         $rules = ArrayHelper::merge(
             $rules,
             [
-                ['email', 'unique', 'targetClass' => '\achertovsky\user\models\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
+                ['email', 'unique', 'targetClass' => '\achertovsky\user\models\User', 'message' => Yii::t('ach-user', 'This email address has already been taken').'.'],
 
                 ['repeatPassword', 'required'],
                 ['repeatPassword', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
@@ -64,7 +64,7 @@ class SignupForm extends ModelsSignupForm
             $rules[] = [
                 ['reCaptcha'],
                 \himiklab\yii2\recaptcha\ReCaptchaValidator2::class,
-                'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a bot.'),
+                'uncheckedMessage' => Yii::t('ach-user', 'Please confirm that you are not a robot').'.',
             ];
         }
         return $rules;

@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use himiklab\yii2\recaptcha\ReCaptcha2;
 
-$this->title = Yii::t('app', 'Sign up');
+$this->title = Yii::t('ach-user', 'Sign up');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1 class='text-center form-group'><?= Html::encode($this->title) ?></h1>
         <?= $this->render('_social_networks', ['actionName' => 'Sign up'])?>
         <?php if (isset(Yii::$app->authClientCollection) && count(Yii::$app->authClientCollection) > 0) {?>
-            <div class='text-center form-group'><h2><?=Yii::t('app', 'OR')?></h2></div>
+            <div class='text-center form-group'><h2><?=Yii::t('ach-user', 'OR')?></h2></div>
         <?php }?>
         <div class='clearfix'></div>
 
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
             <div class="form-group text-center">
-                <?= Html::submitButton(Yii::t('app', 'Sign up'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                <?= Html::submitButton(Yii::t('ach-user', 'Sign up'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
             </div>
 
         <?php ActiveForm::end(); ?>

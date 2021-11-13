@@ -28,7 +28,7 @@ class UserMailHandler extends BaseObject
      * @param string $email
      * @return void
      */
-    public static function sendPasswordResetRequest($email)
+    public static function sendPasswordResetRequest($email, $token)
     {
         $user = User::findByEmail($email);
         if (empty($user)) {
@@ -36,10 +36,11 @@ class UserMailHandler extends BaseObject
         }
         return static::sendMessage(
             $user->email,
-            Yii::t("app", "Password reset for ").Yii::$app->name,
+            Yii::t("ach-user", "Password reset for")." ".Yii::$app->name,
             'passwordResetToken',
             [
                 'user' => $user,
+                'token' => $token,
             ]
         );
     }
@@ -61,7 +62,7 @@ class UserMailHandler extends BaseObject
         }
         return static::sendMessage(
             $user->email,
-            Yii::t("app", "Welcome!"),
+            Yii::t("ach-user", "Welcome").'!',
             'emailVerify',
             [
                 'user' => $user,

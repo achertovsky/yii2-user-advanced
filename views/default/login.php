@@ -8,7 +8,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use himiklab\yii2\recaptcha\ReCaptcha2;
 
-$this->title = Yii::t('app', 'Login');
+$this->title = Yii::t('ach-user', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1 class='text-center form-group'><?= Html::encode($this->title) ?></h1>
         <?= $this->render('_social_networks', ['actionName' => 'Login'])?>
         <?php if (isset(Yii::$app->authClientCollection) && count(Yii::$app->authClientCollection) > 0) {?>
-            <div class='text-center form-group'><h2><?=Yii::t('app', 'OR')?></h2></div>
+            <div class='text-center form-group'><h2><?=Yii::t('ach-user', 'OR')?></h2></div>
         <?php }?>
         <div class='clearfix'></div>
 
@@ -35,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
             <div style="color:#999;margin:1em 0">
-                If you forgot your password you can <?= Html::a('reset it', ['/user/default/request-password-reset']) ?>.
+                <?=Yii::t('ach-user', 'If you forgot your password you can').' '.Html::a(Yii::t('ach-user', 'reset it'), ['/user/default/request-password-reset']) ?>.
                 <br>
-                Need new verification email? <?= Html::a('Resend', ['/user/default/resend-verification-email']) ?>
+                <?=Yii::t('ach-user', 'Need new verification email').'? '.Html::a(Yii::t('ach-user', 'Resend'), ['/user/default/resend-verification-email']) ?>
             </div>
 
             <?php
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
 
             <div class="form-group text-center">
-                <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::submitButton(Yii::t('ach-user', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
 
         <?php ActiveForm::end(); ?>

@@ -14,13 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2 col-md-6 offset-md-3">
         <h1 class='text-center form-group'><?= Html::encode($this->title) ?></h1>
 
-        <p><?=Yii::t('app', 'Please fill out your email. A link to reset password will be sent there.')?></p>
+        <p><?=Yii::t('ach-user', 'Please fill out your email. A link to reset password will be sent there').'.'?></p>
         <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
 
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
             <div class="form-group text-center">
-                <?= Html::submitButton(Yii::t('app', 'Send'), ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton(Yii::t('ach-user', 'Send'), ['class' => 'btn btn-primary']) ?>
             </div>
 
         <?php ActiveForm::end(); ?>

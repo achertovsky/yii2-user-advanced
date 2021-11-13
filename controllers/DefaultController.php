@@ -11,12 +11,12 @@ use yii\authclient\AuthAction;
 use yii\filters\AccessControl;
 use achertovsky\user\models\User;
 use yii\authclient\ClientInterface;
+use frontend\models\VerifyEmailForm;
 use yii\web\BadRequestHttpException;
 use achertovsky\user\models\LoginForm;
 use yii\base\InvalidArgumentException;
 use achertovsky\user\models\SignupForm;
 use achertovsky\traits\AjaxValidationTrait;
-use achertovsky\user\models\VerifyEmailForm;
 use achertovsky\user\models\ResetPasswordForm;
 use achertovsky\user\handlers\RegistrationHandler;
 use achertovsky\user\actions\EmailInteractionAction;
@@ -45,12 +45,14 @@ class DefaultController extends Controller
                 'class' => EmailInteractionAction::class,
                 'viewName' => 'requestPasswordResetToken',
                 'emailFunctionName' => 'sendPasswordResetRequest',
+                'type' => 'reset',
             ],
             'resend-verification-email' => [
                 'class' => EmailInteractionAction::class,
                 'viewName' => 'resendVerificationEmail',
                 'emailFunctionName' => 'sendEmailConfirm',
                 'userStatus' => User::STATUS_INACTIVE,
+                'type' => 'resend',
             ],
         ];
     }
@@ -118,7 +120,7 @@ class DefaultController extends Controller
         );
         Yii::$app->user->login($user);
         if (!$result) {
-            Yii::$app->session->setFlash('error', Yii::t('app', "Unexpected issue occured. Signup/login was not successfull, sorry"));
+            Yii::$app->session->setFlash('error', Yii::t('ach-user', "Unexpected issue occured. Signup/login was not successfull, sorry"));
             $this->action->successUrl = Url::previous();
         } else {
             $this->action->successUrl = Url::home();
@@ -179,11 +181,11 @@ class DefaultController extends Controller
                 return $this->renderSignup($model);
             }
             if (!RegistrationHandler::signup($model->email, $model->password, User::STATUS_INACTIVE, $user)) {
-                Yii::$app->session->setFlash('error', 'User was not created. Please, contact support');
+                Yii::$app->session->setFlash('error', Yii::t('ach-user', 'User was not created. Please, contact support'));
                 return $this->goBack();
             }
             RegistrationHandler::signupEmail($user);
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', Yii::t('ach-user', 'Thank you for registration. Please check your inbox for verification email').'.');
             return $this->goHome();
         }
 
@@ -218,7 +220,7 @@ class DefaultController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
+            Yii::$app->session->setFlash('success', Yii::t('ach-user', 'New password saved').'.');
 
             return $this->goHome();
         }
@@ -244,12 +246,12 @@ class DefaultController extends Controller
         }
         if ($user = $model->verifyEmail()) {
             if (Yii::$app->user->login($user)) {
-                Yii::$app->session->setFlash('success', Yii::t('app', 'Your email has been confirmed!'));
+                Yii::$app->session->setFlash('success', Yii::t('ach-user', 'Your email has been confirmed').'!');
                 return $this->goHome();
             }
         }
 
-        Yii::$app->session->setFlash('error', Yii::t('app', 'Sorry, we are unable to verify your account with provided token.'));
+        Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to verify your account with provided token').'.');
         return $this->goHome();
     }
 }

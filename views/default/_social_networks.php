@@ -15,7 +15,7 @@ if ($exist) {
 ?>
         <div class="form-group">
             <?= Html::a(
-                FA::icon($name).Yii::t("app", "Via ").$name,
+                FA::icon(strtolower($name))->size(FA::SIZE_LARGE).' '.Yii::t("ach-user", "Via")." $name",
                 Url::toRoute(
                     [
                         '/user/default/auth',

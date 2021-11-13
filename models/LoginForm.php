@@ -20,6 +20,15 @@ class LoginForm extends ModelsLoginForm
      */
     private $_user;
 
+    public function attributeLabels()
+    {
+        return [
+            'email' => Yii::t('ach-user', 'Your email address'),
+            'password' => Yii::t('ach-user', 'Password'),
+            'rememberMe' => Yii::t('ach-user', 'Remember Me')
+        ];
+    }
+
 
     /**
      * {@inheritdoc}
@@ -40,7 +49,7 @@ class LoginForm extends ModelsLoginForm
             $rules[] = [
                 ['reCaptcha'],
                 \himiklab\yii2\recaptcha\ReCaptchaValidator2::class,
-                'uncheckedMessage' => Yii::t('app', 'Please confirm that you are not a robot.'),
+                'uncheckedMessage' => Yii::t('ach-user', 'Please confirm that you are not a robot').'.',
             ];
         }
         return $rules;

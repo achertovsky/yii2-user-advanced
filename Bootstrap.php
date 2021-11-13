@@ -7,6 +7,7 @@ use Yii;
 use Exception;
 use yii\base\BootstrapInterface;
 use yii\helpers\ArrayHelper;
+use yii\i18n\PhpMessageSource;
 
 class Bootstrap implements BootstrapInterface
 {
@@ -16,10 +17,18 @@ class Bootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         Yii::setAlias('@ach-user', '@vendor/achertovsky/yii2-user-advanced');
+        
         /**
-         * @todo
-         * add here i18n
+         * i18n part
          */
+        Yii::$app->i18n->translations['ach-user'] = [
+            'class' => PhpMessageSource::class,
+            'sourceLanguage' => 'en-US',
+            'basePath' => '@ach-user/i18n',
+            'fileMap' => [
+                'ach-user' => 'ach-user.php',
+            ]
+        ];
 
         /**
          * Adds migration path of current module to map

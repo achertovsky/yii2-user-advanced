@@ -2,6 +2,7 @@
 
 namespace achertovsky\user\models;
 
+use Yii;
 use yii\base\Model;
 use achertovsky\user\models\User;
 
@@ -16,6 +17,14 @@ class UserEmailInteractionForm extends Model
      * @var integer
      */
     public $status = User::STATUS_ACTIVE;
+
+    public function attributeLabels()
+    {
+        return [
+            'email' => Yii::t('ach-user', 'Your email address'),
+            'status' => Yii::t('ach-user', 'Status'),
+        ];
+    }
 
 
     /**

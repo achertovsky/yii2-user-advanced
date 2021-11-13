@@ -24,6 +24,11 @@ class EmailInteractionAction extends Action
     public $userStatus = User::STATUS_ACTIVE;
 
     /**
+     * @var bookean
+     */
+    public $type;
+
+    /**
      * Fullfills password restore/email verify resend request
      *
      * @return mixed
@@ -35,12 +40,24 @@ class EmailInteractionAction extends Action
                 'status' => $this->userStatus,
             ]
         );
+        $token = null;
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if (call_user_func([UserMailHandler::class, $this->emailFunctionName], $model->email)) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+            if ($this->type == 'reset') {
+                $user = User::findByEmail($model->email);
+                if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
+                    $user->generatePasswordResetToken();
+                    if (!$user->save()) {
+                        Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address').'.');
+                        return $this->controller->goHome();
+                    }
+                }
+                $token = $user->password_reset_token;
+            }
+            if (call_user_func([UserMailHandler::class, $this->emailFunctionName], $model->email, $token)) {
+                Yii::$app->session->setFlash('success', Yii::t('ach-user', 'Check your email for further instructions').'.');
                 return $this->controller->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to process request for the provided email address.');
+                Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address').'.');
             }
         }
 
@@ -54,7 +71,7 @@ class EmailInteractionAction extends Action
              * show success anyway, to not let define email existance in the system
              */
             if ($model->hasErrors() && empty($error)) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->session->setFlash('success', Yii::t('ach-user', 'Check your email for further instructions').'.');
             }
         }
 
