@@ -18,17 +18,19 @@ class Bootstrap implements BootstrapInterface
     {
         Yii::setAlias('@ach-user', '@vendor/achertovsky/yii2-user-advanced');
         
-        /**
-         * i18n part
-         */
-        Yii::$app->i18n->translations['ach-user'] = [
-            'class' => PhpMessageSource::class,
-            'sourceLanguage' => 'en-US',
-            'basePath' => '@ach-user/i18n',
-            'fileMap' => [
-                'ach-user' => 'ach-user.php',
-            ]
-        ];
+        if (Yii::$app->getModule('user')->enablei18n) {
+            /**
+             * i18n part
+             */
+            Yii::$app->i18n->translations['ach-user'] = [
+                'class' => PhpMessageSource::class,
+                'sourceLanguage' => 'en-US',
+                'basePath' => '@ach-user/i18n',
+                'fileMap' => [
+                    'ach-user' => 'ach-user.php',
+                ]
+            ];
+        }
 
         /**
          * Adds migration path of current module to map

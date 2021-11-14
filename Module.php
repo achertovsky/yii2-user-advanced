@@ -20,4 +20,11 @@ class Module extends BaseModule
      * @var boolean
      */
     public $replaceDefaultRoutes = true;
+
+    /**
+     * Ability to translate by yourself
+     *
+     * @var boolean
+     */
+    public $enablei18n = true;
 }
