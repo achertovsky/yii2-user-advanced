@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Resend verification email';
+$this->title = Yii::t('ach-user', 'Resend verification email');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
         <div class="form-group text-center">
-            <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Yii::t('ach-user', 'Send'), ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
