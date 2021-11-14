@@ -16,7 +16,7 @@ use yii\web\BadRequestHttpException;
 use achertovsky\user\models\LoginForm;
 use yii\base\InvalidArgumentException;
 use achertovsky\user\models\SignupForm;
-use achertovsky\traits\AjaxValidationTrait;
+use achertovsky\helpers\AjaxValidationTrait;
 use achertovsky\user\models\ResetPasswordForm;
 use achertovsky\user\handlers\RegistrationHandler;
 use achertovsky\user\actions\EmailInteractionAction;
