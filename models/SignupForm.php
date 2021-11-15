@@ -42,12 +42,12 @@ class SignupForm extends ModelsSignupForm
                 unset($rules[$key]);
                 continue;
             }
-            if (array_key_exists('targetClass', $rule)) {
-                switch ($rule['targetClass']) {
-                    case User::class:
-                        $rules[$key]['targetClass'] = '\achertovsky\user\models\User';
-                        break;
-                }
+            if (array_key_exists('targetClass', $rule) && $rule['targetClass'] == User::class) {
+                $rules[$key]['targetClass'] = '\achertovsky\user\models\User';
+            }
+            // for i18n purpose
+            if (in_array('email', $rule) && in_array('unique', $rule)) {
+                unset($rules[$key]);
             }
         }
         $rules = ArrayHelper::merge(

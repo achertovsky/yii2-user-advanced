@@ -23,7 +23,6 @@ return [
     'Hello' => 'Вітаємо',
     'If you forgot your password you can' => 'Якщо Ви забули пароль можна',
     'Login' => 'Увійти',
-    'Need new verification email' => 'Потрібен ще один лист підтвердження',
     'New password saved' => 'Новий пароль збережено',
     'OR' => 'АБО',
     'Password' => 'Пароль',
@@ -34,7 +33,7 @@ return [
     'Please fill out your email. A verification email will be sent there' => 'Будь ласка, введіть Ваш email. Посилання щоб підтвердити поштову скриньку буде надіслано туди',
     'Remember Me' => 'Запам`ятати мене',
     'Repeat Password' => 'Повторіть пароль',
-    'Resend' => 'Переслати',
+    'Request password reset' => 'Запит на скидання пароля',
     'Resend verification email' => 'Переслати лист підтвердження',
     'Reset password' => 'Скинути пароль',
     'Save' => 'Зберегти',
@@ -52,5 +51,4 @@ return [
     'Your email address' => 'Ваш email',
     'Your email has been confirmed' => 'Ваш email підтверджено',
     'reset it' => 'скинути його',
-    'Request password reset' => 'Запит на скидання пароля',
 ];

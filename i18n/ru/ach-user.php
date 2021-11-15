@@ -23,7 +23,6 @@ return [
     'Hello' => 'Здравствуйте',
     'If you forgot your password you can' => 'Если Вы забыли пароль можно',
     'Login' => 'Войти',
-    'Need new verification email' => 'Нужно еще одно письмо подтверждения',
     'New password saved' => 'Новый пароль сохранен',
     'OR' => 'ИЛИ',
     'Password' => 'Пароль',
@@ -34,7 +33,7 @@ return [
     'Please fill out your email. A verification email will be sent there' => 'Пожалуйста, введите свой email. Ссылка для подтверждения почтового ящика будет отправлена туда',
     'Remember Me' => 'Запомнить меня',
     'Repeat Password' => 'Повторите пароль',
-    'Resend' => 'Переслать',
+    'Request password reset' => 'Запрос на сброс пароля',
     'Resend verification email' => 'Переслать письмо подтверждения',
     'Reset password' => 'Сбросить пароль',
     'Save' => 'Сохранить',
@@ -52,5 +51,4 @@ return [
     'Your email address' => 'Ваш email',
     'Your email has been confirmed' => 'Ваш email подтвержден',
     'reset it' => 'сбросить его',
-    'Request password reset' => 'Запрос на сброс пароля',
 ];

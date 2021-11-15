@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div style="color:#999;margin:1em 0">
                 <?=Yii::t('ach-user', 'If you forgot your password you can').' '.Html::a(Yii::t('ach-user', 'reset it'), ['/user/default/request-password-reset']) ?>.
                 <br>
-                <?=Yii::t('ach-user', 'Need new verification email').'? '.Html::a(Yii::t('ach-user', 'Resend'), ['/user/default/resend-verification-email']) ?>
+                <?Html::a(Yii::t('ach-user', 'Resend verification email'), ['/user/default/resend-verification-email']) ?>
             </div>
 
             <?php
