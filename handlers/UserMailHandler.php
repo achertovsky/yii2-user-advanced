@@ -83,10 +83,15 @@ class UserMailHandler extends BaseObject
         /** @var \yii\mail\BaseMailer $mailer */
         $mailer = Yii::$app->mailer;
         $mailer->setViewPath('@ach-user/views/mail');
-        return $mailer->compose(["html" => $view, "text" => "text/$view"], $params)
-            ->setTo($to)
-            ->setFrom(Yii::$app->getModule('user')->senderEmail)
-            ->setSubject($subject)
-            ->send();
+        try {
+            return $mailer->compose(["html" => $view, "text" => "text/$view"], $params)
+                ->setTo($to)
+                ->setFrom(Yii::$app->getModule('user')->senderEmail)
+                ->setSubject($subject)
+                ->send();
+        } catch (\Exception $ex) {
+            Yii::error($ex);
+            return false;
+        }
     }
 }

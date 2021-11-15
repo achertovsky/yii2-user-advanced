@@ -47,7 +47,7 @@ class EmailInteractionAction extends Action
                 if (!User::isPasswordResetTokenValid($user->password_reset_token)) {
                     $user->generatePasswordResetToken();
                     if (!$user->save()) {
-                        Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address').'.');
+                        Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address, try again later or contact support').'.');
                         return $this->controller->goHome();
                     }
                 }
@@ -57,7 +57,7 @@ class EmailInteractionAction extends Action
                 Yii::$app->session->setFlash('success', Yii::t('ach-user', 'Check your email for further instructions').'.');
                 return $this->controller->goHome();
             } else {
-                Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address').'.');
+                Yii::$app->session->setFlash('error', Yii::t('ach-user', 'Sorry, we are unable to process request for the provided email address, try again later or contact support').'.');
             }
         }
 

@@ -39,7 +39,7 @@ return [
     'Save' => 'Зберегти',
     'Send' => 'Надіслати',
     'Sign up' => 'Реєстрація',
-    'Sorry, we are unable to process request for the provided email address' => 'Вибачте, ми не змогли виконати Ваш запит для наданого email',
+    'Sorry, we are unable to process request for the provided email address, try again later or contact support' => 'Вибачте, ми не змогли виконати Ваш запит для наданого email, спробуйте пізніше або зверніться до підтримки',
     'Sorry, we are unable to verify your account with provided token' => 'Вибачте, ми не змогли підтвердити акаунт за допомогою наданої інформації',
     'Status' => 'Статус',
     'Thank you for registration. Please check your inbox for verification email' => 'Дякую за реєстрацію. Будь ласка, перевірте Вашу поштову скриньку щоб підтвердити email',
