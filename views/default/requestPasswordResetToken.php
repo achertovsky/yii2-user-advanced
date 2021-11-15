@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Request password reset';
+$this->title = Yii::t('ach-user', 'Request password reset');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">

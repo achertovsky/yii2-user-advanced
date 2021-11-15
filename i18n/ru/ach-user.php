@@ -35,6 +35,7 @@ return [
     'Remember Me' => 'Запомнить меня',
     'Repeat Password' => 'Повторите пароль',
     'Resend' => 'Переслать',
+    'Resend verification email' => 'Переслать письмо подтверждения',
     'Reset password' => 'Сбросить пароль',
     'Save' => 'Сохранить',
     'Send' => 'Отправить',
@@ -51,5 +52,5 @@ return [
     'Your email address' => 'Ваш email',
     'Your email has been confirmed' => 'Ваш email подтвержден',
     'reset it' => 'сбросить его',
-    'Resend verification email' => 'Переслать письмо подтверждения',
+    'Request password reset' => 'Запрос на сброс пароля',
 ];
