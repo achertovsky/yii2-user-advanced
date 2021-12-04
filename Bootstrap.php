@@ -37,15 +37,17 @@ class Bootstrap implements BootstrapInterface
          */
         if (php_sapi_name() == 'cli') {
             $map = Yii::$app->controllerMap;
-            $map = [
-                'migrate' => [
+            if (isset($map['migrate'])) {
+                $map['migrate']['migrationPath'][] = '@ach-user/migrations';
+            } else {
+                $map['migrate'] = [
                     'class' => 'yii\console\controllers\MigrateController',
                     'migrationPath' => [
                         '@app/migrations', //default
                         '@ach-user/migrations',
                     ],
-                ],
-            ];
+                ];
+            }
             Yii::$app->controllerMap = $map;
         }
 
