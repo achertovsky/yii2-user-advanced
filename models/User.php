@@ -76,4 +76,14 @@ class User extends ModelsUser implements IdentityInterface
     {
         return static::findOne(['email' => $email, 'status' => $status]);
     }
+
+    /**
+     * Generates password hash from password and sets it to the model
+     *
+     * @param string $password
+     */
+    public function setPassword($password)
+    {
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password, Yii::$app->getModule('user')->cost);
+    }
 }
