@@ -17,6 +17,9 @@ class Bootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         Yii::setAlias('@ach-user', '@vendor/achertovsky/yii2-user-advanced');
+        if (empty(Yii::$app->getModule('user'))) {
+            return;
+        }
         
         if (Yii::$app->getModule('user')->enablei18n) {
             /**

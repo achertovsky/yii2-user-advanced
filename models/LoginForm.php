@@ -13,8 +13,6 @@ class LoginForm extends ModelsLoginForm
 {
     /** @var string */
     public $email;
-    /** @var string */
-    public $reCaptcha;
     /**
      * @var User
      */
@@ -45,13 +43,6 @@ class LoginForm extends ModelsLoginForm
             ['password', 'validatePassword'],
             
         ];
-        if (Yii::$app->has('reCaptcha')) {
-            $rules[] = [
-                ['reCaptcha'],
-                \himiklab\yii2\recaptcha\ReCaptchaValidator2::class,
-                'uncheckedMessage' => Yii::t('ach-user', 'Please confirm that you are not a robot').'.',
-            ];
-        }
         return $rules;
     }
 

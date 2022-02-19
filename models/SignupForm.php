@@ -14,8 +14,6 @@ class SignupForm extends ModelsSignupForm
     public $password;
     /** @var string */
     public $repeatPassword;
-    /** @var string */
-    public $reCaptcha;
     
 
     public function attributeLabels()
@@ -60,13 +58,6 @@ class SignupForm extends ModelsSignupForm
                 ['repeatPassword', 'compare', 'compareAttribute' => "password"],
             ]
         );
-        if (Yii::$app->has('reCaptcha')) {
-            $rules[] = [
-                ['reCaptcha'],
-                \himiklab\yii2\recaptcha\ReCaptchaValidator2::class,
-                'uncheckedMessage' => Yii::t('ach-user', 'Please confirm that you are not a robot').'.',
-            ];
-        }
         return $rules;
     }
 }

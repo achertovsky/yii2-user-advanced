@@ -6,7 +6,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use himiklab\yii2\recaptcha\ReCaptcha2;
 
 $this->title = Yii::t('ach-user', 'Login');
 $this->params['breadcrumbs'][] = $this->title;
@@ -40,17 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?=Html::a(Yii::t('ach-user', 'Resend verification email'), ['/user/default/resend-verification-email']) ?>
             </div>
 
-            <?php
-            if (Yii::$app->has('reCaptcha')) {
-                echo $form->field($model, 'reCaptcha', ['options' => ['class' => 'text-center']])->label(false)->widget(
-                    \himiklab\yii2\recaptcha\ReCaptcha2::class,
-                    [
-                        'widgetOptions' => ['class' => 'inline-block'],
-                        'size' => ReCaptcha2::SIZE_COMPACT,
-                    ]
-                );
-            }
-            ?>
 
             <div class="form-group text-center">
                 <?= Html::submitButton(Yii::t('ach-user', 'Login'), ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
