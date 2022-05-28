@@ -1,3 +1,5 @@
+# package is obsolete, suggested not be used
+
 Creted and tested for yii2-advanced-template ~2.0.14. Other support is not guaranteed, but expected and will be developed.
 
 Will override default template user interaction, including:
